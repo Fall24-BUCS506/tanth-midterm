@@ -4,11 +4,11 @@
 This project aimed to predict movie review scores using Amazon review data. The dataset contained user-generated review texts, metadata, and ratings between 1 and 5 stars. The primary challenge was leveraging relevant features to develop an efficient model while addressing performance constraints, given the large and potentially unbalanced dataset.
 
 ## Hypothesis/Assumptions
-I hypothesize that the `text` column contains the most useful information that points towards the score given by users. Therefore, we mainly explored using `TextBlob` for sentiment and readability analysis on the `Text` field, hypothesizing that positive sentiment or high readability scores might correlate with high ratings, and vice versa. Other columns like `Time` might also provide additional information that might help improve model accuracy.
+I hypothesize that the `text` column contains the most useful information that points towards the score given by users. Therefore, I mainly explored using `TextBlob` for sentiment and readability analysis on the `Text` field, hypothesizing that positive sentiment or high readability scores might correlate with high ratings, and vice versa. Other columns like `Time` might also provide additional information that might help improve model accuracy.
 
 ## Data Preparation and Preprocessing
 1. **Loading Data and Feature Selection**:  
-   The dataset included features such as `ProductId`, `UserId`, `HelpfulnessNumerator`, `HelpfulnessDenominator`, `Time`, `Summary`, `Text`, and `Score`. Given our model's scope, we focused on numerical features only, excluding using text-based features like `Summary` and `Text` directly.
+   The dataset included features such as `ProductId`, `UserId`, `HelpfulnessNumerator`, `HelpfulnessDenominator`, `Time`, `Summary`, `Text`, and `Score`. Given our model's scope, I focused on numerical features only, excluding using text-based features like `Summary` and `Text` directly.
 
 2. **Feature Engineering**: 
    - **Sentiment Analysis**: I created two columns (`polarity` and `subjectivity`) using `TextBlob`'s sentiment analysis tool on the `text` column to measure the sentiment and how subjective or opinion-based the review is.
@@ -17,13 +17,13 @@ I hypothesize that the `text` column contains the most useful information that p
    - **Timestamp Conversion**: Although the original `Time` column was included, its use as an actual date was not converted or expanded due to simplicity and relevance considerations.
 
 3. **Handling Class Imbalance**:  
-   The dataset was highly skewed toward 5-star ratings. To balance the training data, we used an upsampling approach on minority classes, ensuring equal representation of each class. A fixed `random_state=42` was set to make results reproducible.
+   The dataset was highly skewed toward 5-star ratings. To balance the training data, I used an upsampling approach on minority classes, ensuring equal representation of each class. A fixed `random_state=42` was set to make results reproducible.
 
 4. **Train-Test Split**:  
    A 75-25 split was applied to the data to form the training and test sets. This allowed for evaluating model performance and tuning parameters without additional cross-validation, thereby saving computational resources.
 
 ## Model Selection and Tuning
-After testing several models, including Support Vector Machines (SVMs) and K-Nearest Neighbors (KNNs), we selected **XGBoost (XGBClassifier)** due to its scalability and efficiency with tabular data.
+After testing several models, including Support Vector Machines (SVMs) and K-Nearest Neighbors (KNNs), I selected **XGBoost (XGBClassifier)** due to its scalability and efficiency with tabular data.
 
 ## Final Model Parameters
 Through preliminary experimentation (formerly using `GridSearchCV`), the following parameters were identified as optimal for the XGBoost model:
@@ -35,7 +35,7 @@ Through preliminary experimentation (formerly using `GridSearchCV`), the followi
 
 ## Packages and Libraries Used
 
-Throughout this project, we used several Python packages and libraries that facilitated data processing, feature engineering, model building, and evaluation. Below is a breakdown of each package and its role:
+Throughout this project, I used several Python packages and libraries that facilitated data processing, feature engineering, model building, and evaluation. Below is a breakdown of each package and its role:
 ### Covered in class
 1. **Pandas** (`pandas`):  
    - **Purpose**: Used for data manipulation and analysis, particularly for loading, cleaning, and transforming the dataset.
@@ -51,7 +51,7 @@ Throughout this project, we used several Python packages and libraries that faci
      - `train_test_split` for creating training and testing datasets.
      - `resample` to balance the classes by upsampling minority classes.
      - `accuracy_score` and `confusion_matrix` to evaluate model predictions.
-   - **Pipeline Setup**: Initially, Scikit-learn was used to experiment with pipelines and grid search for hyperparameter tuning before we finalized the best parameters. The code for the pipeline is since then removed from the notebook.
+   - **Pipeline Setup**: Initially, Scikit-learn was used to experiment with pipelines and grid search for hyperparameter tuning before I finalized the best parameters. The code for the pipeline is since then removed from the notebook.
 
 ### Not covered in class
 4. **XGBoost** (`xgboost`):  
@@ -64,7 +64,7 @@ Throughout this project, we used several Python packages and libraries that faci
    - **Purpose**: A library for processing textual data, particularly for sentiment analysis and readability scoring.
    - **Usage**:
      - Initially used to generate polarity and subjectivity scores to gauge the sentiment of each review.
-     - This library is called every time we generate the `X_submission` and `X-train` CSV files, which is only when we are changing the features of our dataset. Otherwise, when we are training the model, we can save computational resources by not recreating those 2 CSV files.
+     - This library is called every time I generate the `X_submission` and `X-train` CSV files, which is only when I am changing the features of our dataset. Otherwise, when I am training the model, I can save computational resources by not recreating those 2 CSV files.
 
 ### Explored but not used in final submission
 6. **NLTK** (`nltk` - Natural Language Toolkit):  
@@ -75,7 +75,7 @@ Throughout this project, we used several Python packages and libraries that faci
 
 ## Special Techniques and Optimization
 1. **Memory Efficiency**:  
-   Through various prior GridSearch, we have discovered the optimal parameters above. Therefore, when we are experimenting on our features but not the model, we omit `GridSearchCV` and set parameters directly. By doing this, we avoided the high memory overhead of tuning multiple parameter combinations, which had previously caused memory issues and computer crashes. Limiting the data to relevant numerical features (excluding text) also helped manage memory constraints effectively.
+   Through various prior GridSearch, I have discovered the optimal parameters above. Therefore, when I am experimenting on our features but not the model, I omit `GridSearchCV` and set parameters directly. By doing this, I avoided the high memory overhead of tuning multiple parameter combinations, which had previously caused memory issues and computer crashes. Limiting the data to relevant numerical features (excluding text) also helped manage memory constraints effectively.
    
 2. **Reproducibility**:  
    Setting `random_state=42` consistently across functions (train-test split, resampling, and model instantiation) ensured that every run produced the same results and final `submission.csv` file. This reproducibility facilitated reliable comparisons during development.
