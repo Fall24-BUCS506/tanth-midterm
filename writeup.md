@@ -100,16 +100,16 @@ When thinking about Amazon reviews, one would think that the most context on wha
 ![Score Count](score_count.png)
 
 ## Citation
-[XGBoost Documentation](https://xgboost.readthedocs.io/en/latest/index.html)
-[Short introduction to XGBoost](https://www.geeksforgeeks.org/ml-xgboost-extreme-gradient-boosting/)
-An excerpt from the introduction above:
-What is XGBoost (Extreme Gradient Boosting)?
+[XGBoost Documentation](https://xgboost.readthedocs.io/en/latest/index.html)  
+[Short introduction to XGBoost](https://www.geeksforgeeks.org/ml-xgboost-extreme-gradient-boosting/)  
+An excerpt from the introduction above:  
+What is XGBoost (Extreme Gradient Boosting)?  
 
 XGBoost, or Extreme Gradient Boosting, is a state-of-the-art machine learning algorithm renowned for its exceptional predictive performance. It is the gold standard in ensemble learning, especially when it comes to gradient-boosting algorithms. It develops a series of weak learners one after the other to produce a reliable and accurate predictive model.Fundamentally, XGBoost builds a strong predictive model by aggregating the predictions of several weak learners, usually decision trees. It uses a boosting technique to create an extremely accurate ensemble model by having each weak learner after it correct the mistakes of its predecessors.
 
-[TextBlob Documentation](https://textblob.readthedocs.io/en/dev/quickstart.html)
-An excerpt from the official documentation:
-TextBlob is a Python library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, and more.
+[TextBlob Documentation](https://textblob.readthedocs.io/en/dev/quickstart.html)  
+An excerpt from the official documentation:  
+TextBlob is a Python library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, and more.  
 [Short guide on TextBlob](https://www.analyticsvidhya.com/blog/2021/10/making-natural-language-processing-easy-with-textblob/)
 
 ## External and online resources used
