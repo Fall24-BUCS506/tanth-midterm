@@ -4,16 +4,16 @@
 This project aimed to predict movie review scores using Amazon review data. The dataset contained user-generated review texts, metadata, and ratings between 1 and 5 stars. The primary challenge was leveraging relevant features to develop an efficient model while addressing performance constraints, given the large and potentially unbalanced dataset.
 
 ## Hypothesis/Assumptions
-We hypothesize that the `text` column contains the most useful information that points towards the score given by users. Therefore, we mainly explored using `TextBlob` for sentiment and readability analysis on the `Text` field, hypothesizing that positive sentiment or high readability scores might correlate with high ratings, and vice versa. Other columns like `Time` might also provide additional information that might help improve model accuracy.
+I hypothesize that the `text` column contains the most useful information that points towards the score given by users. Therefore, we mainly explored using `TextBlob` for sentiment and readability analysis on the `Text` field, hypothesizing that positive sentiment or high readability scores might correlate with high ratings, and vice versa. Other columns like `Time` might also provide additional information that might help improve model accuracy.
 
 ## Data Preparation and Preprocessing
 1. **Loading Data and Feature Selection**:  
    The dataset included features such as `ProductId`, `UserId`, `HelpfulnessNumerator`, `HelpfulnessDenominator`, `Time`, `Summary`, `Text`, and `Score`. Given our model's scope, we focused on numerical features only, excluding using text-based features like `Summary` and `Text` directly.
 
 2. **Feature Engineering**: 
-   - **Sentiment Analysis**: We created two columns (`polarity` and `subjectivity`) using `TextBlob`'s sentiment analysis tool on the `text` column to measure the sentiment and how subjective or opinion-based the review is.
-   - **Helpfulness Ratio**: We calculated the ratio of helpful votes (`HelpfulnessNumerator`) to the total votes (`HelpfulnessDenominator`) to reflect user-perceived helpfulness.
-   - **Review Length**: We computed the length of each review text (word count) to represent verbosity and engagement levels indirectly.
+   - **Sentiment Analysis**: I created two columns (`polarity` and `subjectivity`) using `TextBlob`'s sentiment analysis tool on the `text` column to measure the sentiment and how subjective or opinion-based the review is.
+   - **Helpfulness Ratio**: I calculated the ratio of helpful votes (`HelpfulnessNumerator`) to the total votes (`HelpfulnessDenominator`) to reflect user-perceived helpfulness.
+   - **Review Length**: I computed the length of each review text (word count) to represent verbosity and engagement levels indirectly.
    - **Timestamp Conversion**: Although the original `Time` column was included, its use as an actual date was not converted or expanded due to simplicity and relevance considerations.
 
 3. **Handling Class Imbalance**:  
@@ -72,10 +72,6 @@ Throughout this project, we used several Python packages and libraries that faci
    - **Usage**:
      - VADER (Valence Aware Dictionary and sEntiment Reasoner) from NLTK was tested for extracting compound, positive, neutral, and negative sentiment scores from review text.
      - Although ultimately excluded, VADER was considered for providing additional insights on sentiment polarity.
-
-### Summary
-These packages were chosen to meet project requirements for data handling, visualization, machine learning, and initial NLP exploration. Together, they provided a robust framework to process large-scale data, engineer relevant features, and implement a machine learning model capable of predicting movie review ratings effectively.
-
 
 ## Special Techniques and Optimization
 1. **Memory Efficiency**:  
